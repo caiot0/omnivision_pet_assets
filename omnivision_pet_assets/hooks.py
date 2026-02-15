@@ -6,7 +6,12 @@ app_email = "ctoscanodebritto@gmail.com"
 app_license = "mit"
 
 fixtures = [
-    "Custom Field",
+    {
+        "dt": "Custom Field",
+        "filters": [
+            ["module", "=", "Omnipets"]
+        ]
+    },
     "Check_in Pet"
 ]
 
