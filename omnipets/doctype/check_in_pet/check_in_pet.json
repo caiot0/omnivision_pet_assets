@@ -1,0 +1,90 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-03-15 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "tutor",
+  "data_da_visita",
+  "amended_from",
+  "section_break_4",
+  "realizar_banho",
+  "realizar_tosa",
+  "column_break_6",
+  "instrucoes"
+ ],
+ "fields": [
+  {
+   "fieldname": "tutor",
+   "fieldtype": "Link",
+   "label": "Tutor",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "data_da_visita",
+   "fieldtype": "Date",
+   "label": "Data da Visita",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Check_in Pet",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_4",
+   "fieldtype": "Section Break",
+   "label": "Serviços"
+  },
+  {
+   "fieldname": "realizar_banho",
+   "fieldtype": "Check",
+   "label": "Realizar Banho"
+  },
+  {
+   "fieldname": "realizar_tosa",
+   "fieldtype": "Check",
+   "label": "Realizar Tosa"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "instrucoes",
+   "fieldtype": "HTML",
+   "label": "Instruções"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 0,
+ "links": [],
+ "modified": "2024-03-15 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Omnipets",
+ "name": "Check_in Pet",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

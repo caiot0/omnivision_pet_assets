@@ -1,0 +1,55 @@
+[
+    {
+        "dt": "Custom Field",
+        "doctype": "Customer",
+        "fieldname": "custom_pet_name",
+        "fieldtype": "Data",
+        "label": "Nome do Pet"
+    },
+    {
+        "dt": "Custom Field",
+        "doctype": "Customer",
+        "fieldname": "custom_pet_breed",
+        "fieldtype": "Data",
+        "label": "Raça do Pet"
+    },
+    {
+        "dt": "Custom Field",
+        "doctype": "Customer",
+        "fieldname": "custom_pet_image",
+        "fieldtype": "Attach Image",
+        "label": "Foto do Pet"
+    },
+    {
+        "dt": "Custom Field",
+        "doctype": "Customer",
+        "fieldname": "custom_pet_age",
+        "fieldtype": "Int",
+        "label": "Idade do Pet"
+    },
+    {
+        "dt": "Custom Field",
+        "doctype": "Customer",
+        "fieldname": "custom_pet_weight",
+        "fieldtype": "Float",
+        "label": "Peso do Pet"
+    },
+    {
+        "dt": "Custom Field",
+        "doctype": "Customer",
+        "fieldname": "custom_vaccination_status",
+        "fieldtype": "Select",
+        "label": "Status de Vacinação",
+        "options": "Vacinado
+Não Vacinado"
+    },
+    {
+        "dt": "Custom Field",
+        "doctype": "Customer",
+        "fieldname": "custom_security_status",
+        "fieldtype": "Select",
+        "label": "Status de Segurança",
+        "options": "Modo Seguro
+Modo PERIGO"
+    }
+]

@@ -1,9 +1,14 @@
-app_name = "meu_app_customizado"
-app_title = "omnipets"
+app_name = "omnivision_pet_assets"
+app_title = "OmniVision Pet Assets"
 app_publisher = "advision"
 app_description = "assets for pets"
 app_email = "ctoscanodebritto@gmail.com"
 app_license = "mit"
+
+fixtures = [
+    "Custom Field",
+    "Check_in Pet"
+]
 
 # Apps
 # ------------------
@@ -13,11 +18,11 @@ app_license = "mit"
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
 # 	{
-# 		"name": "meu_app_customizado",
-# 		"logo": "/assets/meu_app_customizado/logo.png",
+# 		"name": "omnivision_pet_assets",
+# 		"logo": "/assets/omnivision_pet_assets/logo.png",
 # 		"title": "omnipets",
-# 		"route": "/meu_app_customizado",
-# 		"has_permission": "meu_app_customizado.api.permission.has_app_permission"
+# 		"route": "/omnivision_pet_assets",
+# 		"has_permission": "omnivision_pet_assets.api.permission.has_app_permission"
 # 	}
 # ]
 
@@ -25,15 +30,15 @@ app_license = "mit"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/meu_app_customizado/css/meu_app_customizado.css"
-# app_include_js = "/assets/meu_app_customizado/js/meu_app_customizado.js"
+# app_include_css = "/assets/omnivision_pet_assets/css/omnivision_pet_assets.css"
+# app_include_js = "/assets/omnivision_pet_assets/js/omnivision_pet_assets.js"
 
 # include js, css files in header of web template
-# web_include_css = "/assets/meu_app_customizado/css/meu_app_customizado.css"
-# web_include_js = "/assets/meu_app_customizado/js/meu_app_customizado.js"
+# web_include_css = "/assets/omnivision_pet_assets/css/omnivision_pet_assets.css"
+# web_include_js = "/assets/omnivision_pet_assets/js/omnivision_pet_assets.js"
 
 # include custom scss in every website theme (without file extension ".scss")
-# website_theme_scss = "meu_app_customizado/public/scss/website"
+# website_theme_scss = "omnivision_pet_assets/public/scss/website"
 
 # include js, css files in header of web form
 # webform_include_js = {"doctype": "public/js/doctype.js"}
@@ -51,7 +56,7 @@ app_license = "mit"
 # Svg Icons
 # ------------------
 # include app icons in desk
-# app_include_icons = "meu_app_customizado/public/icons.svg"
+# app_include_icons = "omnivision_pet_assets/public/icons.svg"
 
 # Home Pages
 # ----------
@@ -75,43 +80,43 @@ app_license = "mit"
 
 # add methods and filters to jinja environment
 # jinja = {
-# 	"methods": "meu_app_customizado.utils.jinja_methods",
-# 	"filters": "meu_app_customizado.utils.jinja_filters"
+# 	"methods": "omnivision_pet_assets.utils.jinja_methods",
+# 	"filters": "omnivision_pet_assets.utils.jinja_filters"
 # }
 
 # Installation
 # ------------
 
-# before_install = "meu_app_customizado.install.before_install"
-# after_install = "meu_app_customizado.install.after_install"
+# before_install = "omnivision_pet_assets.install.before_install"
+# after_install = "omnivision_pet_assets.install.after_install"
 
 # Uninstallation
 # ------------
 
-# before_uninstall = "meu_app_customizado.uninstall.before_uninstall"
-# after_uninstall = "meu_app_customizado.uninstall.after_uninstall"
+# before_uninstall = "omnivision_pet_assets.uninstall.before_uninstall"
+# after_uninstall = "omnivision_pet_assets.uninstall.after_uninstall"
 
 # Integration Setup
 # ------------------
 # To set up dependencies/integrations with other apps
 # Name of the app being installed is passed as an argument
 
-# before_app_install = "meu_app_customizado.utils.before_app_install"
-# after_app_install = "meu_app_customizado.utils.after_app_install"
+# before_app_install = "omnivision_pet_assets.utils.before_app_install"
+# after_app_install = "omnivision_pet_assets.utils.after_app_install"
 
 # Integration Cleanup
 # -------------------
 # To clean up dependencies/integrations with other apps
 # Name of the app being uninstalled is passed as an argument
 
-# before_app_uninstall = "meu_app_customizado.utils.before_app_uninstall"
-# after_app_uninstall = "meu_app_customizado.utils.after_app_uninstall"
+# before_app_uninstall = "omnivision_pet_assets.utils.before_app_uninstall"
+# after_app_uninstall = "omnivision_pet_assets.utils.after_app_uninstall"
 
 # Desk Notifications
 # ------------------
 # See frappe.core.notifications.get_notification_config
 
-# notification_config = "meu_app_customizado.notifications.get_notification_config"
+# notification_config = "omnivision_pet_assets.notifications.get_notification_config"
 
 # Permissions
 # -----------
@@ -150,39 +155,39 @@ app_license = "mit"
 
 # scheduler_events = {
 # 	"all": [
-# 		"meu_app_customizado.tasks.all"
+# 		"omnivision_pet_assets.tasks.all"
 # 	],
 # 	"daily": [
-# 		"meu_app_customizado.tasks.daily"
+# 		"omnivision_pet_assets.tasks.daily"
 # 	],
 # 	"hourly": [
-# 		"meu_app_customizado.tasks.hourly"
+# 		"omnivision_pet_assets.tasks.hourly"
 # 	],
 # 	"weekly": [
-# 		"meu_app_customizado.tasks.weekly"
+# 		"omnivision_pet_assets.tasks.weekly"
 # 	],
 # 	"monthly": [
-# 		"meu_app_customizado.tasks.monthly"
+# 		"omnivision_pet_assets.tasks.monthly"
 # 	],
 # }
 
 # Testing
 # -------
 
-# before_tests = "meu_app_customizado.install.before_tests"
+# before_tests = "omnivision_pet_assets.install.before_tests"
 
 # Overriding Methods
 # ------------------------------
 #
 # override_whitelisted_methods = {
-# 	"frappe.desk.doctype.event.event.get_events": "meu_app_customizado.event.get_events"
+# 	"frappe.desk.doctype.event.event.get_events": "omnivision_pet_assets.event.get_events"
 # }
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
 # override_doctype_dashboards = {
-# 	"Task": "meu_app_customizado.task.get_dashboard_data"
+# 	"Task": "omnivision_pet_assets.task.get_dashboard_data"
 # }
 
 # exempt linked doctypes from being automatically cancelled
@@ -196,13 +201,13 @@ app_license = "mit"
 
 # Request Events
 # ----------------
-# before_request = ["meu_app_customizado.utils.before_request"]
-# after_request = ["meu_app_customizado.utils.after_request"]
+# before_request = ["omnivision_pet_assets.utils.before_request"]
+# after_request = ["omnivision_pet_assets.utils.after_request"]
 
 # Job Events
 # ----------
-# before_job = ["meu_app_customizado.utils.before_job"]
-# after_job = ["meu_app_customizado.utils.after_job"]
+# before_job = ["omnivision_pet_assets.utils.before_job"]
+# after_job = ["omnivision_pet_assets.utils.after_job"]
 
 # User Data Protection
 # --------------------
@@ -232,7 +237,7 @@ app_license = "mit"
 # --------------------------------
 
 # auth_hooks = [
-# 	"meu_app_customizado.auth.validate"
+# 	"omnivision_pet_assets.auth.validate"
 # ]
 
 # Automatically update python controller files with type annotations for this app.

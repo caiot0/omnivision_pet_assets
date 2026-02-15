@@ -1,0 +1,185 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<div id="pet-profile-container">
+    <!-- This container will be populated by JavaScript -->
+</div>
+<div id="loading-state" style="text-align: center; padding: 20px;">
+    <p>Carregando informações do pet...</p>
+</div>
+<div id="error-state" style="display: none; text-align: center; padding: 20px; color: red;">
+    <p>Não foi possível encontrar as informações do pet. Verifique o ID fornecido.</p>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const petId = "{{ pet_id }}";
+        const petProfileContainer = document.getElementById("pet-profile-container");
+        const loadingState = document.getElementById("loading-state");
+        const errorState = document.getElementById("error-state");
+
+        if (!petId) {
+            loadingState.style.display = "none";
+            errorState.style.display = "block";
+            errorState.querySelector("p").innerText = "ID do pet não fornecido na URL. Ex: /pet?name=CUSTOMER-00001";
+            return;
+        }
+
+        frappe.call({
+            method: "omnivision_pet_assets.omnipets.api.get_pet_info",
+            args: {
+                pet_id: petId
+            },
+            callback: function(r) {
+                loadingState.style.display = "none";
+                if (r.message) {
+                    renderPetProfile(r.message);
+                } else {
+                    errorState.style.display = "block";
+                }
+            },
+            error: function() {
+                loadingState.style.display = "none";
+                errorState.style.display = "block";
+            }
+        });
+
+        function renderPetProfile(data) {
+            const securityModeClass = data.status_de_seguranca === "Modo PERIGO" ? "danger-mode" : "safe-mode";
+            const securityBorderColor = data.status_de_seguranca === "Modo PERIGO" ? "#E74C3C" : "#2ecc71";
+            
+            let profileHTML = `
+                <div class="pet-profile ${securityModeClass}" style="border: 5px solid ${securityBorderColor};">
+                    <div class="pet-header">
+                        <h1>${data.nome_do_pet}</h1>
+                        <p>${data.raca}</p>
+                    </div>
+                    <div class="pet-image-container">
+                        <img src="${data.imagem}" alt="Foto de ${data.nome_do_pet}" class="pet-image">
+                    </div>
+                    <div class="pet-details">
+                        <p><strong>Tutor:</strong> ${data.customer_name}</p>
+                        <p><strong>Telefone do Tutor:</strong> <a href="tel:${data.telefone_do_tutor}">${data.telefone_do_tutor}</a></p>
+                        <p><strong>Idade:</strong> ${data.idade} anos</p>
+                        <p><strong>Peso:</strong> ${data.peso} kg</p>
+                        <p><strong>Vacinação:</strong> ${data.status_de_vacinacao}</p>
+                        <p class="security-status"><strong>Status: ${data.status_de_seguranca}</strong></p>
+                    </div>
+                    <div class="pet-actions">
+                        <!-- Botão de Check-in para Staff -->
+                        <button id="btn-staff-checkin" style="display: none;">Realizar Check-in</button>
+                    </div>
+                </div>
+            `;
+            petProfileContainer.innerHTML = profileHTML;
+            
+            // Lógica de sessão para exibir o botão de check-in
+            if (frappe.session.user !== "Guest") {
+                const checkinBtn = document.getElementById("btn-staff-checkin");
+                checkinBtn.style.display = "block";
+                checkinBtn.addEventListener("click", function() {
+                    frappe.set_route("Form", "Check_in Pet", "New Check_in Pet", {
+                        tutor: petId
+                    });
+                });
+            }
+        }
+    });
+</script>
+{% endblock %}
+
+{% block style %}
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+    .pet-profile-container {
+        max-width: 600px;
+        margin: 20px auto;
+        font-family: Arial, sans-serif;
+    }
+    .pet-profile {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+    .pet-header {
+        text-align: center;
+        padding: 20px;
+        background-color: #f1f1f1;
+    }
+    .pet-header h1 {
+        margin: 0;
+        font-size: 2em;
+        color: #333;
+    }
+    .pet-header p {
+        margin: 5px 0 0;
+        color: #777;
+    }
+    .pet-image-container {
+        width: 100%;
+        text-align: center;
+    }
+    .pet-image {
+        max-width: 100%;
+        height: auto;
+    }
+    .pet-details {
+        padding: 20px;
+    }
+    .pet-details p {
+        margin: 10px 0;
+        font-size: 1.1em;
+    }
+    .security-status strong {
+        padding: 5px 10px;
+        border-radius: 5px;
+        color: white;
+    }
+    .safe-mode .security-status strong {
+        background-color: #2ecc71; /* Verde */
+    }
+    .danger-mode .security-status strong {
+        background-color: #E74C3C; /* Vermelho */
+    }
+    .pet-actions {
+        padding: 20px;
+        text-align: center;
+    }
+    #btn-staff-checkin {
+        background-color: #34495e; /* Grafite */
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.2em;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    #btn-staff-checkin:hover {
+        background-color: #2c3e50;
+    }
+    .pet-details a {
+        color: #FFD200; /* Amarelo AdVision */
+        text-decoration: none;
+    }
+
+    /* Mobile First */
+    @media (max-width: 600px) {
+        .pet-header h1 {
+            font-size: 1.5em;
+        }
+        .pet-details p {
+            font-size: 1em;
+        }
+        #btn-staff-checkin {
+            padding: 12px 25px;
+            font-size: 1em;
+        }
+    }
+</style>
+{% endblock %}
